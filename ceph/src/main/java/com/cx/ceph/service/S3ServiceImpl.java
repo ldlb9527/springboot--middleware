@@ -85,4 +85,9 @@ public class S3ServiceImpl implements S3Service {
     public ObjectListing bucketFileList(String bucketName) {
         return s3.listObjects(bucketName);
     }
+
+    @Override
+    public void deleteFile(String bucketName, String key) {
+        s3.deleteObject(bucketName,key);
+    }
 }

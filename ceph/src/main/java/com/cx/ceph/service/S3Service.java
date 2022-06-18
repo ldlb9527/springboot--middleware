@@ -19,4 +19,6 @@ public interface S3Service {
     Map<String, Object> fileDownLoad(String bucketName, String key);
 
     ObjectListing bucketFileList(String bucketName);
+
+    void deleteFile(String bucketName, String key);
 }

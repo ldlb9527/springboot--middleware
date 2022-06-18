@@ -1,16 +1,12 @@
 package com.cx.ceph.controller;
 
-import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.Bucket;
-import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.cx.ceph.service.S3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.net.URL;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -74,6 +70,18 @@ public class CephController {
     @ResponseBody
     public Map<String,Object> fileDownLoad(@RequestParam("bucketName") String bucketName,@RequestParam(value = "key")String key){
         return s3Service.fileDownLoad(bucketName,key);
+    }
+
+    /**
+     * 文件下载 (公有读可通过url直接下载)
+     * @param bucketName
+     * @param key
+     * @return
+     */
+    @RequestMapping(value = "/deleteFile",method = {RequestMethod.GET})
+    @ResponseBody
+    public void deleteFile(@RequestParam("bucketName") String bucketName,@RequestParam(value = "key")String key){
+        s3Service.deleteFile(bucketName,key);
     }
 
     /**
