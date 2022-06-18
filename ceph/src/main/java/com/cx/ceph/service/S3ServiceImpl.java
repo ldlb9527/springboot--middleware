@@ -71,4 +71,18 @@ public class S3ServiceImpl implements S3Service {
             return null;
         }
     }
+
+    @Override
+    public Map<String, Object> fileDownLoad(String bucketName, String key) {
+        GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucketName, key);
+        URL url = s3.generatePresignedUrl(request);
+        Map<String,Object> result = new HashMap<>();
+        result.put("url",url);
+        return result;
+    }
+
+    @Override
+    public ObjectListing bucketFileList(String bucketName) {
+        return s3.listObjects(bucketName);
+    }
 }

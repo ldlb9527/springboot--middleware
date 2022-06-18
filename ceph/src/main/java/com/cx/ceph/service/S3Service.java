@@ -1,6 +1,7 @@
 package com.cx.ceph.service;
 
 import com.amazonaws.services.s3.model.Bucket;
+import com.amazonaws.services.s3.model.ObjectListing;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -15,4 +16,7 @@ public interface S3Service {
 
     Map<String, Object> fileUpload(String bucketName, MultipartFile multipartFile);
 
+    Map<String, Object> fileDownLoad(String bucketName, String key);
+
+    ObjectListing bucketFileList(String bucketName);
 }
