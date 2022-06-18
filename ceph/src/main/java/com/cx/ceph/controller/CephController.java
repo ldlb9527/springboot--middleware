@@ -73,7 +73,7 @@ public class CephController {
     }
 
     /**
-     * 文件下载 (公有读可通过url直接下载)
+     * 删除文件对象
      * @param bucketName
      * @param key
      * @return
